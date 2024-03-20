@@ -12,6 +12,6 @@ export const auth =()=>{
         const findUser = await User.findById(decodedData.userId)
         if(!findUser){return next(new Error('please SignUp first',{casue:400}))}
         req.authUser=findUser
-        next()}catch(error){next(new Error(error.message))}
+        next()}catch(error){next(new Error(`authentication error :${error.message}`,{casue:400}))}
     }
 }

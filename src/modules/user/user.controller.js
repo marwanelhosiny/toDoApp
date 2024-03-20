@@ -57,8 +57,12 @@ export const userDelete=async(req,res,next)=>{
 }
 
 export const usersoftDelete=async(req,res,next)=>{
-    const{firstname,lastname,age}=req.body
     const{_id}=req.authUser
     const updated=await User.findOneAndUpdate({_id},{deleted:true},{new:true})
     return res.status(200).json({messsage:"user deleted currentely",updated})
+}
+
+export const uploadProfilePic=async(req,res,next)=>{
+    const {name}=req.body
+    return res.json({message:'done',data:req.file})
 }
